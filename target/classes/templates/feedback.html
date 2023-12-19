@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <link rel="stylesheet" href="styles.css"/>
+
+</head>
+<body>
+<th:block th:include="header"></th:block>
+<div class="all">
+  <h1 class="text-center"></h1>
+  <div class="container">
+
+    <div class="card-header">
+
+      <div class="card-body">
+        <form class="form" th:action="@{/regFeedback}" th:Object="${feedback}" method="post">
+          <div class="group">
+            <input th:field="*{nnames}" placeholder="‎" type="text" required="">
+            <label><b>Name</b></label>
+          </div>
+          <div class="group">
+            <input th:field="*{emails}" placeholder="‎" type="text" id="email" name="name" required="">
+            <label for="email"><b>Email</b></label>
+          </div>
+          <div class="group">
+            <textarea placeholder="‎" th:field="*{suggestion}" id="suggestion" name="suggestion" rows="5" required=""></textarea>
+            <label for="suggestion"><b>Suggestion</b></label>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+Index: src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring.datasource.url=jdbc:mysql://localhost/cool\r\nspring.datasource.username=root\r\nspring.datasource.password=\r\nspring.jpa.hibernate.ddl-auto=update\r\nspring.jpa.show-sql=true\r\nspring.servlet.multipart.enabled=true\r\nspring.datasource.driver-class-name=com.mysql.jdbc.Driver\r\nspring.main.allow-circular-references=true\r\nspring.mail.host=smtp.gmail.com\r\nspring.mail.port=587\r\nspring.mail.username=ishimweclerik31@gmail.com\r\nspring.mail.password=wfgcrwviexnpeuvn \r\nspring.mail.properties.mail.smtp.auth=true\r\nspring.mail.properties.mail.smtp.starttls.enable=true\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/src/main/resources/application.properties b/src/main/resources/application.properties
+--- a/src/main/resources/application.properties	
++++ b/src/main/resources/application.properties	
+@@ -8,7 +8,7 @@
+ spring.main.allow-circular-references=true
+ spring.mail.host=smtp.gmail.com
+ spring.mail.port=587
+-spring.mail.username=ishimweclerik31@gmail.com
+-spring.mail.password=wfgcrwviexnpeuvn 
++spring.mail.username=mugishachrispin250@gmail.com
++spring.mail.password=rebvmulwzajhgull 
+ spring.mail.properties.mail.smtp.auth=true
+ spring.mail.properties.mail.smtp.starttls.enable=true
+Index: src/main/resources/templates/error.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/templates/error.html b/src/main/resources/templates/error.html
+new file mode 100644
+--- /dev/null	
++++ b/src/main/resources/templates/error.html	
+@@ -0,0 +1,53 @@
++<!DOCTYPE html>
++<html lang="en">
++
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>Error</title>
++    <style>
++        body {
++            font-family: 'Arial', sans-serif;
++            background-color: #f8f9fa;
++            margin: 0;
++            padding: 0;
++            display: flex;
++            align-items: center;
++            justify-content: center;
++            height: 100vh;
++        }
++
++        .error-container {
++            text-align: center;
++        }
++
++        .error-code {
++            font-size: 120px;
++            font-weight: bold;
++            color: #dc3545;
++            margin: 0;
++        }
++
++        .error-message {
++            font-size: 24px;
++            color: #495057;
++            margin: 20px 0;
++        }
++
++        .back-to-home {
++            text-decoration: none;
++            color: #007bff;
++            font-size: 18px;
++        }
++    </style>
++</head>
++
++<body>
++<div class="error-container">
++    <p class="error-code">404</p>
++    <p class="error-message">Page not found</p>
++    <a href="landing-page.html" class="back-to-home">Back to Home</a>
++</div>
++</body>
++
++</html>
+Index: src/main/java/com/example/realestateplatform/securityconfig/CustomAuthenticationSuccessHandler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.realestateplatform.securityconfig;\r\nimport org.springframework.security.core.Authentication;\r\nimport org.springframework.security.web.DefaultRedirectStrategy;\r\nimport org.springframework.security.web.RedirectStrategy;\r\nimport org.springframework.security.web.authentication.AuthenticationSuccessHandler;\r\nimport org.springframework.stereotype.Component;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport javax.servlet.http.HttpSession;\r\nimport java.io.IOException;\r\n\r\n@Component\r\npublic class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {\r\n    private final RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();\r\n    @Override\r\n    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response\r\n            , Authentication authentication) throws IOException {\r\n\r\n\r\n        HttpSession session = request.getSession();\r\n        String email = authentication.getName();\r\n        if (email.contains(\"admin1\")) {\r\n            redirectStrategy.sendRedirect(request, response, \"/admin\");\r\n        } else {\r\n            redirectStrategy.sendRedirect(request, response, \"/dashboard\");\r\n        }\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/realestateplatform/securityconfig/CustomAuthenticationSuccessHandler.java b/src/main/java/com/example/realestateplatform/securityconfig/CustomAuthenticationSuccessHandler.java
+--- a/src/main/java/com/example/realestateplatform/securityconfig/CustomAuthenticationSuccessHandler.java	
++++ b/src/main/java/com/example/realestateplatform/securityconfig/CustomAuthenticationSuccessHandler.java	
+@@ -26,4 +26,4 @@
+         }
+ 
+     }
+-}
++}
+\ No newline at end of file
+Index: src/main/resources/templates/finding.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <title></title>\r\n  <link href=\"css/boot.css\" rel=\"stylesheet\">\r\n        o\r\n</head>\r\n<body>\r\n<th:block th:include=\"header2\"></th:block>\r\n<form th:action=\"@{/find}\" th:Object=\"${finding}\" method=\"post\">\r\n\r\n<div class=\"all\">\r\n  <h1 class=\"text-center\"></h1>\r\n  <div class=\"container\">\r\n    <div class=\"form-group\">\r\n      <input required=\"text\" th:field=\"*{id}\" class=\"form-control\" name=\"password\" id=\"confirm-password\" type=\"text\">\r\n      <input type=\"submit\" class=\"btn\" value=\"finding\">\r\n    </div>\r\n    <div class=\"row\">\r\n\r\n    </div>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-lg-3\">\r\n    \r\n      </div>\r\n    </div>\r\n    <table class=\"table table-striped table-bordered table-hover\">\r\n      <thead class=\"table-dark\">\r\n      <tr>\r\n        <td> ID</td>\r\n        <td>Name</td>\r\n        <td>Email</td>\r\n        <td>telephone No</td>\r\n        <td>location</td>\r\n        <td>Date</td>\r\n        <td>Estate</td>\r\n      </tr>\r\n      </thead>\r\n\r\n      <tbody>\r\n      <tr th:if=\"${agent1}\">\r\n\r\n        <td th:text=\"${agent1.id}\"></td>\r\n        <td th:text=\"${agent1.fullNames}\"></td>\r\n        <td th:text=\"${agent1.emailAddress}\"></td>\r\n        <td th:text=\"${agent1.telephone}\"></td>\r\n        <td th:text=\"${agent1.location}\"></td>\r\n        <td th:text=\"${#dates.format(agent1.date,'yyyy-MM-dd')}\"></td>\r\n        <td th:text=\"${agent1.estate}\"></td>\r\n        <td>\r\n          <a th:href=\"@{/landing/update/{id}(id=${agent1.id})}\" class=\"btn btn-secondary\"> update</a>\r\n\r\n          <a th:href=\"@{/landing/{id}(id=${agent1.id})}\" class=\"btn btn-secondary\"> delete</a>\r\n        </td>\r\n      </tr>\r\n\r\n      </tbody>\r\n      <input type=\"submit\"Onclick=\"window.print()\"value=\"Generate report\">\r\n    </table>\r\n  </div>\r\n</div>\r\n</form>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/templates/finding.html b/src/main/resources/templates/finding.html
+--- a/src/main/resources/templates/finding.html	
++++ b/src/main/resources/templates/finding.html	
+@@ -3,8 +3,8 @@
+ <head>
+   <meta charset="UTF-8">
+   <title></title>
+-  <link href="css/boot.css" rel="stylesheet">
+-        o
++  <link rel="stylesheet" href="styles.css"/>
++
+ </head>
+ <body>
+ <th:block th:include="header2"></th:block>
+Index: src/main/resources/static/styles.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/* Reset some default styles */\r\nbody, h1, h2, h3, p, ul, li {\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\n\r\nbody {\r\n    font-family: 'Arial', sans-serif;\r\n    background-color: #f4f4f4;\r\n}\r\n\r\n.all {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    height: 100vh;\r\n    text-align: center;\r\n}\r\n\r\n.container {\r\n    position: fixed;\r\n    background-color: #fff;\r\n    padding: 20px;\r\n    border-radius: 8px;\r\n    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\r\n    max-width: 600px; /* Adjust the max-width as needed */\r\n    margin: 0 auto; /* Add this line to center the container horizontally */\r\n}\r\n\r\n.card-header {\r\n    text-align: center;\r\n}\r\n\r\n.form {\r\n    max-width: 400px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.group {\r\n    margin-bottom: 20px;\r\n}\r\n\r\ninput, textarea {\r\n    width: 100%;\r\n    padding: 10px;\r\n    box-sizing: border-box;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n}\r\n\r\nbutton {\r\n    background-color: #4caf50;\r\n    color: #fff;\r\n    padding: 10px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\nbutton:hover {\r\n    background-color: #45a049;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/static/styles.css b/src/main/resources/static/styles.css
+--- a/src/main/resources/static/styles.css	
++++ b/src/main/resources/static/styles.css	
+@@ -18,13 +18,14 @@
+ }
+ 
+ .container {
+-    position: fixed;
++    position: absolute;
+     background-color: #fff;
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     max-width: 600px; /* Adjust the max-width as needed */
+     margin: 0 auto; /* Add this line to center the container horizontally */
++
+ }
+ 
+ .card-header {

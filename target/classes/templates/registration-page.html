@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="css/style.css" rel="stylesheet">
+  <title></title>
+
+</head>
+<body>
+<div class="f">
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a>
+        <li><a th:href="@{creation1}">creation</a>
+        <li><a th:href="@{/logout}">logout</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+<main>
+</main>
+
+<center>
+
+  <div class="card-header">
+
+    <div class="card-body">
+      <form th:action="@{/add}" th:object="${agent}" method="post">
+        <div class="login-box">
+            <div class="user-box">
+              <input  th:field="*{id}" required="" name="id" type="text">
+              <label>case Id</label>
+            </div>
+            <div class="user-box">
+              <input  th:field="*{fullNames}" required="" name="fullNames" type="text">
+              <label>Email</label>
+            </div>
+            <div class="user-box">
+              <input  th:field="*{telephone}" required="" name="telephone" type="text">
+              <label>Email</label>
+            </div>
+            <div class="user-box">
+              <input  th:field="*{emailAddress}" required="" name="emailAddress" type="email">
+              <label>Email</label>
+            </div>
+            <div class="user-box">
+              <input  th:field="*{location}" required="" name="agent" type="text">
+              <label>Email</label>
+            </div>
+            <div class="user-box">
+              <input  th:field="*{date}" required="" name="date" type="date">
+              <label>Email</label>
+            </div>
+            <div class="user-box">
+              <input th:field="*{estate}" required="" name="case" type="file">
+              <label>Password</label>
+            </div>
+            <input type="submit" class="btn" value="send">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+            </a>
+
+        </div>
+
+      </form>
+    </div>
+</center>
+
+</div>
+
+<footer>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/style.css" rel="stylesheet">
+          o
+
+</head>
+<body>
+<th:block th:include="header2"></th:block>
+<div class="all">
+    <h1 class="text-center"></h1>
+    <div class="container">
+
+        <section class="gallery">
+
+            <div class="gallery-wrapper">
+                <center>
+                    <div class="card">
+
+
+                        <form th:action="@{/landing/{id} (id=${agent.id})}" th:object="${agent}" method="post">
+                            <div class="login-box">
+                                <p>provide your   case</p>
+                                <div class="user-box">
+                                    <input  th:field="*{id}" required="" name="email" type="text">
+                                    <label>Email</label>
+                                </div>
+                                <div class="user-box">
+                                    <input  th:field="*{fullNames}" required="" name="email" type="text">
+                                    <label>fullNames</label>
+                                </div>
+                                <div class="user-box">
+                                    <input  th:field="*{telephone}" required="" name="email" type="text">
+                                    <label>telephone</label>
+                                </div>
+                                <div class="user-box">
+                                    <input  th:field="*{emailAddress}" required="" name="email" type="email">
+                                    <label>Email</label>
+                                </div>
+
+                                <div class="user-box">
+                                    <input  th:field="*{location}" required="" name="email" type="text">
+                                    <label>location</label>
+                                </div>
+                                <div class="user-box">
+                                    <input  th:field="*{date}" required="" name="email" type="date">
+                                    <label>date</label>
+                                </div>
+
+                                <div class="user-box">
+                                    <input  th:field="*{estate}" required="" name="email" type="text">
+                                    <label>estate</label>
+                                </div>
+
+
+                                <input type="submit" class="hhh" value="send">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </center>
+            </div>
+            </center>
+        </section>
+    </div>
+    </main>
+</div>
+</body>
+</html>

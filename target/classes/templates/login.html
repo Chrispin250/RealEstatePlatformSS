@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .all {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        nav {
+            background-color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box p {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .user-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .user-box input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            font-size: 14px;
+            color: #555;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .user-box input:focus + label,
+        .user-box input:valid + label {
+            top: -15px;
+            left: 0;
+            color: #4caf50;
+            font-size: 12px;
+        }
+
+        #emailError,
+        #passError {
+            color: red;
+        }
+
+        .hhh {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .hhh:hover {
+            background-color: #45a049;
+        }
+
+        .a2 {
+            color: #4caf50;
+        }
+
+    </style>
+
+
+    <script>
+        let isemailvalid = true;
+        let ispassvalid = true;
+
+        function validation() {
+            if (document.getElementById("email").value == "") {
+                isemailvalid = false;
+                document.getElementById("userError").innerHTML = "Please fill up field with your email";
+                document.getElementById("userError").style.color = "red";
+            } else if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(document.getElementById("emailtxt").value) == false) {
+                isemailvalid = false;
+                document.getElementById("userError").innerHTML = "Invalid email, it must contain @ charactor.";
+                document.getElementById("userError").style.color = "red";
+            } else {
+                isemailvalid = true;
+                document.getElementById("userError").innerHTML = "";
+            }
+
+            if (document.getElementById("pass").value == "") {
+                ispassvalid = false;
+                document.getElementById("passError").innerHTML = "Please provide your password."
+                document.getElementById("passError").style.color = "red";
+            } else if (document.getElementById("pass").value.length < 8) {
+                ispassvalid = false;
+                document.getElementById("passError").innerHTML = "invalid password, it must have at list 8 charactors.";
+                document.getElementById("passError").style.color = "red";
+            } else {
+                ispassvalid = true;
+                document.getElementById("passError").innerHTML = "";
+            }
+
+
+            if (isemailvalid == false || ispassvalid == false) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<nav>
+    <ul>
+
+        <li><a th:href="@{come}">Home</a></li>
+        <li><a th:href="@{/creation}">Sign Up</a></li>
+
+    </ul>
+</nav>
+    <div class="all">
+        <h1 class="text-center"></h1>
+        <div class="container">
+
+            <div class="row">
+
+            </div>
+            <section class="gallery">
+
+                <div class="gallery-wrapper">
+                    <center>
+                        <div class="card">
+
+
+                            <form onsubmit="return   validation()" th:action="@{/login}" method="post">
+                                <div class="login-box">
+                                    <div th:if="${param.error}">
+                                        <div class="alert alert-danger"> invalid Email or Password</div>
+                                    </div>
+
+                                    <div th:if="${param.logout}">
+                                        <div class="alert alert-danger"> you have been logged out</div>
+                                    </div>
+                                    <p>Login</p>
+                                    <div class="user-box">
+                                        <input id="email" name="email" type="email">
+                                        <label>Email</label>
+                                        <div> <span id="userError"> </span></div>
+                                    </div>
+                                    <div class="user-box">
+                                        <input id="pass" name="password" type="password">
+                                        <label>Password</label>
+                                        <div> <span id="passError"> </span></div>
+                                    </div>
+                                    <input type="submit" class="hhh" value="login">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+
+                                    </a>
+                                </div>
+                            </form>
+                            <p>Don't have an account? <a th:href="@{/creation}" class="a2">Sign up!</a></p>
+                        </div>
+                    </center>
+                </div>
+                </center>
+            </section>
+        </div>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+diff --git a/src/test/java/com/example/realestateplatform/BibafricaApplicationTests.java b/src/test/java/com/example/realestateplatform/RealestateplatformApplicationTests.java
+rename from src/test/java/com/example/realestateplatform/BibafricaApplicationTests.java
+rename to src/test/java/com/example/realestateplatform/RealestateplatformApplicationTests.java

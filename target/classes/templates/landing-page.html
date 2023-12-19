@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script>
+
+    function confirmAction() {
+      let confirmation = confirm("Are you sure you want to delete?");
+      if (confirmation) {
+        return true;
+      } else {
+       
+        return false;
+      }
+
+    }
+  </script>
+  <link href="css/style.css" rel="stylesheet">
+        o
+</head>
+<body>
+<th:block th:include="header2"></th:block>
+<div class="all">
+  <h1 class="text-center"></h1>
+<div class="container">
+
+  <div class="row">
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+
+    </div>
+  </div>
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+    <tr>
+      <td> ID</td>
+      <td>name</td>
+      <td>telephone No</td>
+      <td>Email</td>
+      <td>Location</td>
+
+      <td>Date</td>
+      <td>estate</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="landingdata: ${listAgents}">
+      <td th:text="${landingdata.id}"></td>
+      <td th:text="${landingdata.fullNames}"></td>
+      <td th:text="${landingdata.telephone}"></td>
+      <td th:text="${landingdata.emailAddress}"></td>
+      <td th:text="${landingdata.location}"></td>
+      <td th:text="${#dates.format(landingdata.date,'yyyy-MM-dd')}"></td>
+      <td th:text="${landingdata.estate}"></td>
+      <td>
+        <a th:href="@{/landing/update/{id}(id=${landingdata.id})}" class="btn btn-secondary"> update</a>
+
+        <a th:href="@{/landing/{id}(id=${landingdata.id})}" class="btn btn-secondary"   onclick="return confirmAction()"> delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <input type="submit" Onclick="window.print()" value="Generate report">
+
+</div>
+
+
+  <table>
+
+    <tr th:if="${totalPage > 1}">
+      <td>
+        Total Rows: [[${totalItems}]]
+      </td>
+
+      <td>
+       <span th:each="i: ${#numbers.sequence(1,totalPage)}">
+        <a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}}">[[${i}]]</a>
+         <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+       </span >
+      </td>
+
+      <td>
+        <a th:if="${currentPage < totalPage}" th:href="@{'/page/' + ${currentPage + 1}}">Next </a>
+        <span th:unless="${currentPage < totalPage}">Next page</span>
+      </td>
+
+      <td>
+        <a th:if="${currentPage < totalPage}" th:href="@{'/page/' + ${totalPage}}">Last</a>
+        <span th:unless="${currentPage < totalPage}">Last</span>
+      </td>
+    </tr>
+  </table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<th:block th:include="header"></th:block>
+<div class="all">
+  <h1 class="text-center"></h1>
+  <div class="container">
+
+    <div class="row">
+
+    </div>
+    <section class="gallery">
+
+      <div class="gallery-wrapper">
+        <center>
+          <div class="card">
+
+
+            <form th:action="@{/add}" th:object="${agent}" method="post">
+              <div class="login-box">
+                <p>List your property</p>
+                  <div th:if="${param.success}">
+                      <p>Your property has been listed. <br> Thank you</p>
+                  </div>
+
+                  <div th:if="${param.error}">
+                      <p>something went wrong </p>
+                  </div>
+
+                <div class="user-box">
+                  <input  th:field="*{id}" required="" name="email" type="text">
+                  <label>Estate Id</label>
+                </div>
+                <div class="user-box">
+                  <input  th:field="*{fullNames}" required="" name="email" type="text">
+                  <label>Agent Name</label>
+                </div>
+                <div class="user-box">
+                  <input  th:field="*{telephone}" required="" name="email" type="text">
+                  <label>Telephone</label>
+                </div>
+                <div class="user-box">
+                  <input  th:field="*{emailAddress}" required="" name="email" type="email">
+                  <label>Email</label>
+                </div>
+
+                <div class="user-box">
+                  <input  th:field="*{location}" required="" name="email" type="text">
+                  <label>Property Location</label>
+                </div>
+                <div class="user-box">
+                  <input  th:field="*{date}" required="" name="email" type="date">
+                  <label>Date of sell</label>
+                </div>
+
+                <div class="user-box">
+                  <input  th:field="*{estate}" required="" name="email" type="file">
+                  <label>Estate</label>
+                </div>
+
+
+                <input type="submit" class="hhh" value="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                </a>
+              </div>
+            </form>
+
+          </div>
+        </center>
+      </div>
+      </center>
+    </section>
+  </div>
+  </main>
+</div>
+</body>
+</html>

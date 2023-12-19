@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/styles.css" rel="stylesheet">
+          o
+
+</head>
+<th:block th:include="header2"></th:block>
+<body>
+<div class="all">
+    <h1 class="text-center"></h1>
+    <div class="container">
+
+        <div class="row">
+
+        </div>
+        <section class="gallery">
+
+            <div class="gallery-wrapper">
+                <center>
+                    <div class="card">
+
+
+                        <form th:action="@{/reg}" th:object="${agent}" method="post">
+                            <div class="login-box">
+                                <p>provide your   case</p>
+                                <div th:if="${param.success}">
+                                    <p>Your  request is successfully  recorded</p>
+                                </div>
+
+                                <div th:if="${param.error}">
+                                    <p>something went wrong </p>
+                                </div>
+
+                                <div class="user-box">
+                                    <input  th:field="*{id}" required="" name="email" type="text">
+                                    <label>case Id</label>
+                                </div>
+                                <div class="user-box">
+                                    <input  th:field="*{fullNames}" required="" name="email" type="text">
+                                    <label>fullNames</label>
+                                </div>
+                                <div class="user-box">
+                                    <input  th:field="*{telephone}" required="" name="email" type="text">
+                                    <label>telephone</label>
+                                </div>
+                                <div class="user-box">
+                                    <input  th:field="*{emailAddress}" required="" name="email" type="email">
+                                    <label>Email</label>
+                                </div>
+
+                                <div class="user-box">
+                                    <input  th:field="*{location}" required="" name="email" type="text">
+                                    <label>location</label>
+                                </div>
+                                <div class="user-box">
+                                    <input  th:field="*{date}" required="" name="email" type="date">
+                                    <label>date</label>
+                                </div>
+
+                                <div class="user-box">
+                                    <input  th:field="*{estate}" required="" name="email" type="file">
+                                    <label>estate</label>
+                                </div>
+
+
+                                <input type="submit" class="hhh" value="send">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </center>
+            </div>
+            </center>
+        </section>
+    </div>
+    </main>
+</div>
+</body>
+</html>

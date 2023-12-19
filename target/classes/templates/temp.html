@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/style.css" rel="stylesheet">
+          o
+
+</head>
+<body>
+<header>
+
+    <nav>
+        <ul>
+            <li><a th:href="@{/fron}">Home</a>
+            <li><a th:href="@{creation1}">creation</a>
+            <li><a th:href="@{/landing}">view</a></li>
+
+
+
+            <li><a th:href="@{/logout}">logout</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="all">
+    <h1 class="text-center">LAWYER FARM</h1>
+    <div class="container">
+
+        <div class="card-header">
+
+            <div class="card-body">
+                <form class="form" th:action="@{/regFeedback}" th:Object="${feedback}" method="post">
+                    <div class="group">
+                        <input th:field="*{nnames}" placeholder="‎" type="text" required="">
+                        <label >Name</label>
+                    </div>
+                    <div class="group">
+                        <input th:field="*{emails}" placeholder="‎" type="text" id="email" name="name" required="">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="group">
+                        <textarea placeholder="‎" th:field="*{suggestion}" id="suggestion" name="suggestion" rows="5" required=""></textarea>
+                        <label for="suggestion">Suggestion</label>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

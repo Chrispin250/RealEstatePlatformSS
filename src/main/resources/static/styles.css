@@ -18,13 +18,14 @@ body {
 }
 
 .container {
-    position: fixed;
+    position: absolute;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 600px; /* Adjust the max-width as needed */
     margin: 0 auto; /* Add this line to center the container horizontally */
+
 }
 
 .card-header {

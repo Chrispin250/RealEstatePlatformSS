@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/styles.css" rel="stylesheet">
+          o
+
+</head>
+<body>
+<th:block th:include="header2"></th:block>
+<div class="all">
+    <h1 class="text-center"></h1>
+    <div class="container">
+
+        <div class="row">
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+              
+            </div>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="table-dark">
+            <tr>
+                <td> Name</td>
+                <td>email</td>
+                <td>Suggestion</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="landingdata: ${display}">
+                <td th:text="${landingdata.nnames}"></td>
+                <td th:text="${landingdata.emails}"></td>
+                <td th:text="${landingdata.suggestion}"></td>
+
+                <td>
+
+
+                    <a th:href="@{/display/{emails}(emails=${landingdata.emails})}" class="btn btn-secondary"> delete</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <input type="submit"Onclick="window.print()"value="Generate report">
+</div>
+</body>
+</html>
